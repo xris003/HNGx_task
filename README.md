@@ -63,7 +63,7 @@ Request Body: JSON object with person details (name, age, email)
 Example Request:
 
 json
-Copy code
+
 {
 "name": "John Doe",
 "age": 30,
@@ -84,7 +84,7 @@ Request Body: JSON object with updated person details
 Example Request:
 
 json
-Copy code
+
 {
 "name": "Updated Name",
 "age": 35,
