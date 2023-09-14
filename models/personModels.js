@@ -1,24 +1,14 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const personSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    max: [100, "id too high"],
+    //required: [true, "Please enter an id"],
+  },
   name: {
     type: String,
     required: [true, "Please enter your name"],
-  },
-
-  email: {
-    type: String,
-    unique: true,
-    lowercase: true,
-    validate: [validator.isEmail, "Enter a valid email"],
-  },
-
-  age: {
-    type: Number,
-    max: [100, "You are too old!"],
-    // validate: [validator.Number, "Names Only!"],
-    default: 18,
   },
 });
 

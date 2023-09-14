@@ -12,16 +12,15 @@ exports.getPerson = (req, res, next) => {
     })
     .catch((error) => {
       res.json({
-        message: "Errorrr",
+        message: "Error Response",
       });
     });
 };
 
 exports.createPerson = [
-  // Use express-validator to validate 'name', 'email', and 'age' fields
-  body("name").isString().withMessage("Name must be a string"),
-  body("email").isEmail().withMessage("Invalid email address"),
-  body("age").isInt().withMessage("Age must be a valid integer"),
+  // Use express-validator to validate 'id','name' fields
+  body("id").isInt().withMessage("ID must be a valid integer"),
+  body("name").isString().withMessage("Invalid name"),
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -32,15 +31,15 @@ exports.createPerson = [
 
     // Validation passed; proceed with creating the person
     const person = new Person({
+      id: req.body.id,
       name: req.body.name,
-      email: req.body.email,
-      age: req.body.age,
     });
 
     person
       .save()
       .then((response) => {
         res.status(201).json({
+          data: response,
           message: "New person created",
         });
       })
@@ -56,9 +55,8 @@ exports.updatePerson = (req, res, next) => {
   let personID = req.body.personID;
 
   let updatedData = {
+    id: req.body.id,
     name: req.body.name,
-    email: req.body.email,
-    age: req.body.age,
   };
 
   Person.findOneAndUpdate(personID, { $set: updatedData })
@@ -75,19 +73,6 @@ exports.updatePerson = (req, res, next) => {
         message: "An error occurred",
       });
     });
-
-  // 1) Filtered out unwanted fields
-  // const filteredBody = filterObj(req.body, "name", "email");
-  // if (req.file) filteredBody.photo = req.file.filename;
-
-  // const updatedPerson = await User.findByIdAndUpdate(
-  //   req.user.id,
-  //   filteredBody,
-  //   {
-  //     new: true,
-  //     runValidators: true,
-  //   }
-  // );
 };
 
 exports.deletePerson = (req, res, next) => {

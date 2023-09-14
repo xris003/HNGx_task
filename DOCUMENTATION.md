@@ -25,29 +25,30 @@ API Documentation
 Request Format
 Describe the required parameters, headers, and request body for this endpoint.
 
-HTTP Method: GET
+HTTP Method: POST
 
-URL: /endpoint1
+URL: /api
 
 Parameters:
 
-param1 (string, required): Description of parameter 1.
-param2 (int, optional): Description of parameter 2.
+param1 (int, optional): id.
+param2 (string, required): name.
+
 Headers:
 
-Authorization (string, required): Bearer token for authentication.
 Response Format
+
 Describe the structure of the response returned by this endpoint.
 
 HTTP Status Codes:
 
 200 OK: Successful request.
 400 Bad Request: Invalid parameters.
-401 Unauthorized: Unauthorized access.
+
 Response Body:
 
 json
-Copy code
+
 {
 "result": "Example result",
 "data": {
@@ -62,12 +63,12 @@ Example Request:
 
 http
 
-GET /endpoint1?param1=value1&param2=42
+GET /api/user_id
 Host: api.example.com
 
 Example Response:
-json
 
+json
 {
 "result": "Success",
 "data": {
@@ -75,29 +76,31 @@ json
 "key2": "result2"
 }
 }
+
 2.2. Endpoint 2
 Request Format
 Describe the request format for this endpoint.
 
-HTTP Method: POST
+HTTP Method: GET
 
-URL: /endpoint2
+URL: /api/user_id
 
 Request Body:
 
 json
 
 {
-"property1": "value1",
-"property2": 42
+"property1": 42,
+"property2": "value1"
 }
+
 Response Format
 Describe the response format for this endpoint.
 
 HTTP Status Codes:
 
-200 OK: Successful request.
-400 Bad Request: Invalid request body.
+200 OK: success.
+400 Bad Request: Error Response.
 500 Internal Server Error: Server-side error.
 
 Response Body:
@@ -113,15 +116,16 @@ Provide an example of how to use this endpoint, including example requests and e
 Example Request:
 
 http
-Copy code
-POST /api/user_id
+
+DELETE /api/user_id
 Host: api.example.com
 Content-Type: application/json
 
 {
-"property1": "sample",
-"property2": 123
+"property1": 99,
+"property2": "sample"
 }
+
 Example Response:
 
 json
