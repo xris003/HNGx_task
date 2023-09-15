@@ -22,7 +22,7 @@ API Documentation
    List the API endpoints that users can interact with. For each endpoint, provide details on request and response formats, along with sample usage.
 
 2.1. Endpoint 1
-Request Format
+_Request Format_
 Describe the required parameters, headers, and request body for this endpoint.
 
 HTTP Method: POST
@@ -31,8 +31,7 @@ URL: /api
 
 Parameters:
 
-param1 (int, optional): id.
-param2 (string, required): name.
+param1 (string, required): name.
 
 Headers:
 
@@ -52,10 +51,9 @@ json
 {
 "result": "Example result",
 "data": {
-"key1": "value1",
-"key2": "value2"
+"key1": "value1",}
 }
-}
+
 Sample Usage
 Provide an example of how to use this endpoint, including example requests and expected responses.
 
@@ -73,29 +71,26 @@ json
 "result": "Success",
 "data": {
 "key1": "result1",
-"key2": "result2"
 }
 }
 
 2.2. Endpoint 2
-Request Format
-Describe the request format for this endpoint.
+_Request Format_
+This endpoint obtains the details of a person.
 
 HTTP Method: GET
 
-URL: /api/user_id
+URL: /api/user_id/:id
 
 Request Body:
 
 json
 
 {
-"property1": 42,
-"property2": "value1"
+"property1": "name1"
 }
 
 Response Format
-Describe the response format for this endpoint.
 
 HTTP Status Codes:
 
@@ -113,6 +108,41 @@ json
 Sample Usage
 Provide an example of how to use this endpoint, including example requests and expected responses.
 
+_Request Format_
+This endpoint updates the details of a person.
+
+HTTP Method: PATCH
+
+URL: /api/user_id/:id
+
+Request Body:
+
+json
+
+{
+"property1": "updated name1"
+}
+
+Response Format
+Describe the response format for this endpoint.
+
+HTTP Status Codes:
+
+200 OK: success.
+400 Bad Request: Error Response.
+500 Internal Server Error: Server-side error.
+
+Response Body:
+json
+
+{
+"result": "Example result"
+}
+
+_Request Format_
+This endpoint deletes the details of a person.
+
+HTTP Method: DELETE
 Example Request:
 
 http
@@ -122,8 +152,7 @@ Host: api.example.com
 Content-Type: application/json
 
 {
-"property1": 99,
-"property2": "sample"
+"property1": "sample"
 }
 
 Example Response:
